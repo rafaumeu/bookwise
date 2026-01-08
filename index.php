@@ -1,3 +1,26 @@
+<?php
+$livros = [
+  [
+    "titulo" => "Título 1",
+    "autor" => "Autor 1",
+    "avaliacoes" => 3,
+    "descricao" => "Descrição 1"
+  ],
+  [
+    "titulo" => "Título 2",
+    "autor" => "Autor 2",
+    "avaliacoes" => 2,
+    "descricao" => "Descrição 2"
+  ],
+  [
+    "titulo" => "Título 3",
+    "autor" => "Autor 3",
+    "avaliacoes" => 1,
+    "descricao" => "Descrição 3"
+  ]
+];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,15 +53,15 @@
       <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="Pesquisar..." name="pesquisar" />
       <button type="submit">🔎</button>
     </form>
-    <section class="space-y-4">
-      <div class="w-1/3 p-2 border-stone-800 border-2 rounded bg-stone-900">
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="p-2 border-stone-800 border-2 rounded bg-stone-900">
         <div class="flex">
 
           <div class="w-1/3">
             Imagem
           </div>
           <div>
-            <div class="font-semibold">Título</div>
+            <a href="/livro.php?" class="font-semibold hover:underline">Título</a>
             <div class="text-xs italic">Autor</div>
             <div class="text-xs italic">⭐⭐⭐⭐⭐ (3 Avaliações)</div>
           </div>
