@@ -26,10 +26,30 @@
   </header>
   <main class="mx-auto max-w-screen-lg space-y-6">
     <h1 class="mt-6 font-bold text-lg mt-6">Explorar</h1>
-    <form class="w-full flex space-x-2">
+    <form class="w-full flex space-x-2 mt-6">
       <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="Pesquisar..." name="pesquisar" />
       <button type="submit">🔎</button>
     </form>
+    <section class="space-y-4">
+      <div class="w-1/3 p-2 border-stone-800 border-2 rounded bg-stone-900">
+        <div class="flex">
+
+          <div class="w-1/3">
+            Imagem
+          </div>
+          <div>
+            <div class="font-semibold">Título</div>
+            <div class="text-xs italic">Autor</div>
+            <div class="text-xs italic">⭐⭐⭐⭐⭐ (3 Avaliações)</div>
+          </div>
+        </div>
+
+        <div class="text-sm">
+          Descrição
+        </div>
+      </div>
+
+    </section>
   </main>
 </body>
 
