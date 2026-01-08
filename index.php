@@ -11,7 +11,7 @@
 
 <body class="bg-stone-950 text-stone-200">
   <header class="bg-stone-900">
-    <nav class="mx-auto max-w-screen-lg flex justify-between px-8 py-4">
+    <nav class="mx-auto max-w-screen-lg flex justify-between py-4">
       <div class="font-bold text-xl tracking-wide">
         BookWise
       </div>
@@ -24,8 +24,12 @@
       </ul>
     </nav>
   </header>
-  <main>
-
+  <main class="mx-auto max-w-screen-lg space-y-6">
+    <h1 class="mt-6 font-bold text-lg mt-6">Explorar</h1>
+    <form class="w-full flex space-x-2">
+      <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="Pesquisar..." name="pesquisar" />
+      <button type="submit">🔎</button>
+    </form>
   </main>
 </body>
 
