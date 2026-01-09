@@ -1,25 +1,5 @@
 <?php
-$livros = [
-  [
-    "titulo" => "Título 1",
-    "autor" => "Autor 1",
-    "avaliacoes" => 3,
-    "descricao" => "Descrição 1"
-  ],
-  [
-    "titulo" => "Título 2",
-    "autor" => "Autor 2",
-    "avaliacoes" => 2,
-    "descricao" => "Descrição 2"
-  ],
-  [
-    "titulo" => "Título 3",
-    "autor" => "Autor 3",
-    "avaliacoes" => 1,
-    "descricao" => "Descrição 3"
-  ]
-];
-
+include "dados.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,24 +34,25 @@ $livros = [
       <button type="submit">🔎</button>
     </form>
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="p-2 border-stone-800 border-2 rounded bg-stone-900">
-        <div class="flex">
+      <?php foreach ($livros as $livro) { ?>
+        <div class="p-2 border-stone-800 border-2 rounded bg-stone-900">
+          <div class="flex">
 
-          <div class="w-1/3">
-            Imagem
+            <div class="w-1/3">
+              Imagem
+            </div>
+            <div class="space-y-1">
+              <a href="/livro.php?id=<?= $livro['id'] ?>" class="font-semibold hover:underline"><?= $livro['titulo'] ?></a>
+              <div class="text-xs italic"><?= $livro['autor'] ?></div>
+              <div class="text-xs italic"><?= str_repeat("⭐", $livro['avaliacoes']) ?> (<?= $livro['avaliacoes'] ?> Avaliações)</div>
+            </div>
           </div>
-          <div>
-            <a href="/livro.php?" class="font-semibold hover:underline">Título</a>
-            <div class="text-xs italic">Autor</div>
-            <div class="text-xs italic">⭐⭐⭐⭐⭐ (3 Avaliações)</div>
+
+          <div class="text-sm mt-2">
+            <?= $livro['descricao'] ?>
           </div>
         </div>
-
-        <div class="text-sm">
-          Descrição
-        </div>
-      </div>
-
+      <?php } ?>
     </section>
   </main>
 </body>
