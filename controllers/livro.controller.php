@@ -1,5 +1,5 @@
 <?php
-require "dados.php";
+
 $id = $_REQUEST['id'];
 $filtrado = array_filter($livros, function ($l) use ($id) {
   return $l['id'] == $id;
