@@ -1,6 +1,3 @@
 <?php
-$db = new DB;
-$id = $_REQUEST['id'];
-$livro = $db->livro($id);
-
+$livro = (new DB)->livro($_REQUEST['id']);
 view("livro", ["livro" => $livro]);

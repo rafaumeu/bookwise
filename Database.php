@@ -19,10 +19,10 @@ class DB
       $sql .= " where titulo like :pesquisa or autor like :pesquisa or descricao like :pesquisa";
       $params = ["pesquisa" => "%$pesquisa%"];
     }
-    $query = $this->db->prepare($sql);
-    $query->execute($params);
-    $livros = $query->fetchAll();
-    return array_map(fn($item) => Livro::make($item), $livros);
+    $prepare = $this->db->prepare($sql);
+    $prepare->setFetchMode(PDO::FETCH_CLASS, Livro::class);
+    $prepare->execute($params);
+    return $prepare->fetchAll();
   }
   /**
    * Retorna apenas um livro do banco de dados pelo id
@@ -32,9 +32,10 @@ class DB
   public function livro($id)
   {
     $sql = "select * from livros where id = :id";
-    $query = $this->db->prepare($sql);
-    $query->execute(['id' => $id]);
-    $item = $query->fetchAll();
-    return array_map(fn($item) => Livro::make($item), $item)[0];
+    $prepare = $this->db->prepare($sql);
+    $prepare->bindValue("id", $id);
+    $prepare->setFetchMode(PDO::FETCH_CLASS, Livro::class);
+    $prepare->execute();
+    return $prepare->fetch();
   }
 }
