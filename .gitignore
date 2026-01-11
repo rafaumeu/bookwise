@@ -12,3 +12,4 @@
 composer.phar
 .env
 .phpunit.result.cache
+.agent/*
