@@ -11,9 +11,16 @@ class DB
    * Retorna todos os livros do banco de dados
    * @return Livro[]
    */
-  public function livros()
+  public function livros($pesquisa = null)
   {
-    $query = $this->db->query("select * from livros");
+    $params = [];
+    $sql = "select * from livros";
+    if ($pesquisa) {
+      $sql .= " where titulo like :pesquisa or autor like :pesquisa or descricao like :pesquisa";
+      $params = ["pesquisa" => "%$pesquisa%"];
+    }
+    $query = $this->db->prepare($sql);
+    $query->execute($params);
     $livros = $query->fetchAll();
     return array_map(fn($item) => Livro::make($item), $livros);
   }

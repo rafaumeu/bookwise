@@ -1,4 +1,4 @@
 <?php
 $db = new DB();
-$livros = $db->livros();
+$livros = $db->livros($_REQUEST["pesquisar"] ?? null);
 view("index", ["livros" => $livros]);
