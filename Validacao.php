@@ -32,25 +32,25 @@ class Validacao
       $this->validacoes[] = "O $campo é inválido";
     }
   }
-  private function confirmed($campo, $campoDeConfirmacao)
+  private function confirmed($campo, $valor, $valorDeConfirmacao)
   {
-    if ($campo != $campoDeConfirmacao) {
+    if ($valor != $valorDeConfirmacao) {
       $this->validacoes[] = "O $campo de confirmação está diferente";
     }
   }
 
   public function naoPassou()
   {
-    $_SESSION['validacoes'] = $validacao->validacoes;
+    $_SESSION['validacoes'] = $this->validacoes;
     return sizeof($this->validacoes) > 0;
   }
-  private function min($valor, $campo, $min)
+  private function min($min, $campo, $valor)
   {
     if (strlen($valor) < $min) {
       $this->validacoes[] = "O $campo deve conter no mínimo $min caracteres.";
     }
   }
-  private function max($valor, $campo, $max)
+  private function max($max, $campo, $valor)
   {
     if (strlen($valor) > $max) {
       $this->validacoes[] = "O $campo deve conter no máximo $max caracteres.";

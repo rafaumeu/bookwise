@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <title>BookWise</title>
 </head>
 
@@ -20,7 +20,11 @@
         <li><a href="/meus-livros" class="hover:underline">Meus Livros</a></li>
       </ul>
       <ul>
-        <li><a href="/login" class="hover:underline">Fazer login</a></li>
+        <?php if (isset($_SESSION['auth'])): ?>
+          <li><a href="/logout" class="hover:underline">Oi, <?= $_SESSION['usuario']['nome'] ?></a></li>
+        <?php else: ?>
+          <li><a href="/login" class="hover:underline">Fazer login</a></li>
+        <?php endif; ?>
       </ul>
     </nav>
   </header>
