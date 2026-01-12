@@ -7,13 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $usuario = $DB->query(
     query: "select * from usuarios where email = :email",
+    class: Usuario::class,
     params: [
       'email' => $email,
     ]
   )->fetch();
-  if ($usuario && password_verify($senha, $usuario['senha'])) {
+  if ($usuario && password_verify($senha, $usuario->senha)) {
     $_SESSION['auth'] = $usuario;
-    $_SESSION['mensagem'] = 'Seja bem-vindo(a) ' . $usuario['nome'] . '!';
+    $_SESSION['mensagem'] = 'Seja bem-vindo(a) ' . $usuario->nome . '!';
     header("location: /");
     exit();
   } else {
