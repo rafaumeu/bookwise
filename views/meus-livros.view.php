@@ -7,7 +7,7 @@
   </div>
   <div class="border border-stone-700 rounded">
     <h2 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Cadastre um novo livro!</h2>
-    <form class="space-y-2 space-x-4" method="post" action="livro-criar">
+    <form class="space-y-2 space-x-4" method="post" action="livro-criar" enctype="multipart/form-data">
       <?php if ($validacoes = flash()->get('validacoes_livro')): ?>
         <div class="bg-red-900 border-red-800 border-2 px-4 py-2 rounded text-sm font-bold text-red-300">
           <ul>
@@ -18,6 +18,8 @@
           </ul>
         </div>
       <?php endif; ?>
+      <label class="text-stone-500 mb-px">Imagem</label>
+      <input type="file" name="imagem" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full">
       <label class="text-stone-500 mb-px">Titulo</label>
       <input class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite o titulo" name="titulo">
       <label class="text-stone-500 mb-px">Autor</label>

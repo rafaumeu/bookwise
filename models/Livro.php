@@ -14,6 +14,7 @@ class Livro
   public $ano_lancamento;
   public $nota_avaliacao;
   public $count_avaliacoes;
+  public $image;
 
   public static function query($where, $params = [])
   {
@@ -25,12 +26,13 @@ class Livro
    l.ano_lancamento, 
    l.autor, 
    l.descricao, 
+   l.imagem,
    ifnull(round(sum(a.nota) / 5.0),0) as nota_avaliacao, 
    ifnull(count(a.id),0) as count_avaliacoes 
    from livros l
    left join avaliacoes a on a.livro_id = l.id 
    where $where
-   group by l.id, l.titulo, l.ano_lancamento, l.autor, l.descricao",
+   group by l.id, l.titulo, l.ano_lancamento, l.autor, l.descricao, l.imagem",
       class: self::class,
       params: $params
     );
