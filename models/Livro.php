@@ -12,4 +12,6 @@ class Livro
   public $avaliacoes;
 
   public $ano_lancamento;
+  public $nota_avaliacao;
+  public $count_avaliacoes;
 }

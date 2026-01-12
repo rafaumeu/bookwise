@@ -1,25 +1,9 @@
 <h1 class="font-bold text-lg">Meus Livros</h1>
 <div class="grid grid-cols-4 gap-4">
   <div class="col-span-3 flex flex-col gap-4">
-    <?php foreach ($livros as $livro): ?>
-      <h1><?= $livro->titulo ?></h1>
-      <div class="p-2 border-stone-800 border-2 rounded bg-stone-900">
-        <div class="flex">
-
-          <div class="w-1/3">
-            Imagem
-          </div>
-          <div class="space-y-1">
-            <a href="/livro?id=<?= $livro->id ?>" class="font-semibold hover:underline"><?= $livro->titulo ?></a>
-            <div class="text-xs italic"><?= $livro->autor ?></div>
-          </div>
-        </div>
-
-        <div class="text-sm mt-2">
-          <?= $livro->descricao ?>
-        </div>
-      </div>
-    <?php endforeach; ?>
+    <?php foreach ($livros as $livro) {
+      require_once 'partials/_livro.php';
+    } ?>
   </div>
   <div class="border border-stone-700 rounded">
     <h2 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Cadastre um novo livro!</h2>

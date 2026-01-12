@@ -1,34 +1,5 @@
-<?php
-$sumNotas = array_reduce(
-  array: $avaliacoes,
-  callback: function ($carry, $avaliacao): mixed {
-    return ($carry ?? 0) + $avaliacao->nota;
-  },
-  initial: 0
-);
-$notaFinal = count($avaliacoes) > 0 ? str_repeat("⭐", round($sumNotas / 5)) : '';
-?>
 <h1><?= $livro->titulo ?></h1>
-<div class="p-2 border-stone-800 border-2 rounded bg-stone-900">
-  <div class="flex">
-
-    <div class="w-1/3">
-      Imagem
-    </div>
-    <div class="space-y-1">
-      <a href="/livro?id=<?= $livro->id ?>" class="font-semibold hover:underline"><?= $livro->titulo ?></a>
-      <div class="text-xs italic"><?= $livro->autor ?></div>
-      <div class="text-xs italic">
-        <?= $notaFinal ?>(<?= count($avaliacoes) ?> <?php if (count($avaliacoes) == 1) echo "Avaliação";
-                                                    else echo "Avaliações"; ?>)
-      </div>
-    </div>
-  </div>
-
-  <div class="text-sm mt-2">
-    <?= $livro->descricao ?>
-  </div>
-</div>
+<?php require_once 'partials/_livro.php'; ?>
 <h2>Avaliações <?= count($avaliacoes) ?></h2>
 <div class="grid grid-cols-4 gap-4">
   <div class="col-span-3 gap-4">
