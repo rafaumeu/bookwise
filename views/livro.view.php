@@ -8,8 +8,8 @@ $sumNotas = array_reduce(
 );
 $notaFinal = count($avaliacoes) > 0 ? str_repeat("⭐", round($sumNotas / 5)) : '';
 ?>
+<h1><?= $livro->titulo ?></h1>
 <div class="p-2 border-stone-800 border-2 rounded bg-stone-900">
-  <h1><?= $livro->titulo ?></h1>
   <div class="flex">
 
     <div class="w-1/3">
