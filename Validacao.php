@@ -60,6 +60,21 @@ class Validacao
       $this->validacoes[] = "O $campo deve conter no máximo $max caracteres.";
     }
   }
+  private function unique($tabela, $campo, $valor)
+  {
+    if (strlen($valor) == 0) {
+      return;
+    }
+    $db =  new Database(config('database'));
+    $resultado = $db->query(
+      query: "select * from $tabela where $campo = :valor",
+      params: ['valor' => $valor]
+    )->fetch();
+    if ($resultado) {
+      $this->validacoes[] = "O email $campo já está em uso.";
+    }
+  }
+
   private function strong($campo, $valor)
   {
     if (!preg_match("/[A-Z]/", $valor)) {

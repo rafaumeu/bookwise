@@ -29,4 +29,4 @@ class Database
     return $prepare;
   }
 }
-$DB = new Database($config['database']);
+$DB = new Database(config('database'));
