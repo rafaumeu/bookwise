@@ -1,3 +1,13 @@
+<?php
+$sumNotas = array_reduce(
+  array: $avaliacoes,
+  callback: function ($carry, $avaliacao): mixed {
+    return ($carry ?? 0) + $avaliacao->nota;
+  },
+  initial: 0
+);
+$notaFinal = count($avaliacoes) > 0 ? str_repeat("⭐", round($sumNotas / 5)) : '';
+?>
 <div class="p-2 border-stone-800 border-2 rounded bg-stone-900">
   <h1><?= $livro->titulo ?></h1>
   <div class="flex">
@@ -8,7 +18,10 @@
     <div class="space-y-1">
       <a href="/livro?id=<?= $livro->id ?>" class="font-semibold hover:underline"><?= $livro->titulo ?></a>
       <div class="text-xs italic"><?= $livro->autor ?></div>
-      <div class="text-xs italic"><?= str_repeat("⭐", $livro->avaliacoes) ?> (<?= $livro->avaliacoes ?> Avaliações)</div>
+      <div class="text-xs italic">
+        <?= $notaFinal ?>(<?= count($avaliacoes) ?> <?php if (count($avaliacoes) == 1) echo "Avaliação";
+                                                    else echo "Avaliações"; ?>)
+      </div>
     </div>
   </div>
 
@@ -16,9 +29,20 @@
     <?= $livro->descricao ?>
   </div>
 </div>
-<h2>Avaliações</h2>
-<div class="grid grid-cols-4 gap4">
-  <div class="col-span-3">
+<h2>Avaliações <?= count($avaliacoes) ?></h2>
+<div class="grid grid-cols-4 gap-4">
+  <div class="col-span-3 gap-4">
+    <?php foreach ($avaliacoes as $avaliacao): ?>
+      <div class="border border-stone-700 rounded">
+        <div class="border-b border-stone-700 flex justify-between items-center">
+          <h2 class="text-stone-400 font-bold px-4 py-2"><?= $avaliacao->usuario->nome ?></h2>
+          <span class="text-sm">Nota: <?= str_repeat("⭐", $avaliacao->nota) ?></span>
+        </div>
+        <div class="px-4 py-2">
+          <?= $avaliacao->avaliacao ?>
+        </div>
+      </div>
+    <?php endforeach; ?>
 
   </div>
   <?php if (auth()): ?>
