@@ -29,6 +29,11 @@
     </nav>
   </header>
   <main class="mx-auto max-w-screen-lg space-y-6">
+    <?php if ($mensagem = flash()->get("mensagem")): ?>
+      <div class="bg-lime-900 border-lime-800 border-2 px-4 py-2 rounded text-sm font-bold text-lime-300">
+        <?= $mensagem; ?>
+      </div>
+    <?php endif; ?>
     <?php require "views/{$view}.view.php"; ?>
   </main>
 </body>

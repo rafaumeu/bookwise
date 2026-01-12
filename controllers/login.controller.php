@@ -1,9 +1,17 @@
 <?php
-$mensagem = $_REQUEST['mensagem'] ?? '';
-
+require "Validacao.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $email = $_POST['email'];
   $senha = $_POST['senha'];
+  $validacao = Validacao::validar([
+    'email' => ['required', 'email'],
+    'senha' => ['required']
+  ], $_POST);
+
+  if ($validacao->naoPassou('login')) {
+    header('location: /login');
+    exit();
+  }
 
   $usuario = $DB->query(
     query: "select * from usuarios where email = :email",
@@ -14,11 +22,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   )->fetch();
   if ($usuario && password_verify($senha, $usuario->senha)) {
     $_SESSION['auth'] = $usuario;
-    $_SESSION['mensagem'] = 'Seja bem-vindo(a) ' . $usuario->nome . '!';
+    flash()->push('mensagem', 'Seja bem-vindo(a) ' . $usuario->nome . '!');
     header("location: /");
     exit();
   } else {
-    $erro_login = "Usuário ou senha incorretos";
+    flash()->push('validacoes_login', ["Usuário ou senha incorretos"]);
   }
 }
-view('login', ['erro_login' => $erro_login]);
+view('login');
+false;

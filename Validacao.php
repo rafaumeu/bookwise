@@ -39,9 +39,13 @@ class Validacao
     }
   }
 
-  public function naoPassou()
+  public function naoPassou($nomeCustomisado = null)
   {
-    $_SESSION['validacoes'] = $this->validacoes;
+    $chave = 'validacoes';
+    if ($nomeCustomisado) {
+      $chave .= '_' . $nomeCustomisado;
+    }
+    flash()->push($chave, $this->validacoes);
     return sizeof($this->validacoes) > 0;
   }
   private function min($min, $campo, $valor)

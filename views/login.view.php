@@ -2,9 +2,14 @@
   <div class="border border-stone-700 rounded">
     <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Login</h1>
     <form class="space-y-2 space-x-4" method="post">
-      <?php if (isset($erro_login) && !empty($erro_login)) : ?>
-        <div class="mt-2 bg-red-900 border-red-800 border-2 px-4 py-2 rounded text-sm font-bold">
-          <?= $erro_login; ?>
+      <?php if ($validacoes = flash()->get('validacoes_login')): ?>
+        <div class="bg-red-900 border-red-800 border-2 px-4 py-2 rounded text-sm font-bold text-red-300">
+          <ul>
+            <li>Dê uma olhada nos erros abaixo</li>
+            <?php foreach ($validacoes as $validacao): ?>
+              <li><?= $validacao; ?></li>
+            <?php endforeach; ?>
+          </ul>
         </div>
       <?php endif; ?>
       <label class="text-stone-500 mb-px">Email</label>
@@ -30,16 +35,11 @@
   <div class="border border-stone-700 rounded">
     <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Registro</h1>
     <form class="space-y-2 space-x-4" method="post" action="/registrar">
-      <?php if (isset($mensagem) && !empty($mensagem)): ?>
-        <div class="bg-lime-900 border-lime-800 border-2 px-4 py-2 rounded text-sm font-bold">
-          <?= $mensagem; ?>
-        </div>
-      <?php endif; ?>
-      <?php if (isset($_SESSION['validacoes']) && sizeof($_SESSION['validacoes'])): ?>
-        <div class="bg-red-900 border-red-800 border-2 px-4 py-2 rounded text-sm font-bold">
+      <?php if ($validacoes = flash()->get('validacoes_registrar')): ?>
+        <div class="bg-red-900 border-red-800 border-2 px-4 py-2 rounded text-sm font-bold text-red-300">
           <ul>
             <li>Dê uma olhada nos erros abaixo</li>
-            <?php foreach ($_SESSION['validacoes'] as $validacao): ?>
+            <?php foreach ($validacoes as $validacao): ?>
               <li><?= $validacao; ?></li>
             <?php endforeach; ?>
           </ul>
