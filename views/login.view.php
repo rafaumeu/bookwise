@@ -3,9 +3,9 @@
     <h1 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Login</h1>
     <form class="space-y-2 space-x-4" method="post">
       <label class="text-stone-500 mb-px">Email</label>
-      <input type="email" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite seu email" name="email" required>
+      <input type="email" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite seu email" name="email">
       <label class="text-stone-500 mb-px">Senha</label>
-      <input type="password" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite sua senha" name="senha" required>
+      <input type="password" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite sua senha" name="senha">
       <button type="submit" class="border-lime-800 bg-lime-900 px-4 py-2 rounded-md border border-2 hover:bg-lime-800">Login</button>
     </form>
 
@@ -29,13 +29,13 @@
         </div>
       <?php endif; ?>
       <label class="text-stone-500 mb-px">Nome</label>
-      <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite seu nome" name="nome" required>
+      <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite seu nome" name="nome">
       <label class="text-stone-500 mb-px">Email</label>
-      <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite seu email" name="email" required>
+      <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite seu email" name="email">
       <label class="text-stone-500 mb-px">Confirme seu email</label>
-      <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite seu email" name="email_confirmacao" required>
+      <input type="text" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite seu email" name="email_confirmacao">
       <label class="text-stone-500 mb-px">Senha</label>
-      <input type="password" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite sua senha" name="senha" required>
+      <input type="password" class="border-stone-800 bg-stone-900 text-sm border-2 rounded-md focus:outline-none px-2 py-1 w-full" placeholder="digite sua senha" name="senha">
       <button type="reset" class="border-lime-800 bg-lime-900 px-4 py-2 rounded-md border border-2 hover:bg-lime-800">Cancelar</button>
       <button type="submit" class="border-lime-800 bg-lime-900 px-4 py-2 rounded-md border border-2 hover:bg-lime-800">Registrar</button>
     </form>
