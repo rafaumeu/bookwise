@@ -8,8 +8,11 @@
       <a href="/livro?id=<?= $livro->id ?>" class="font-semibold hover:underline"><?= $livro->titulo ?></a>
       <div class="text-xs italic"><?= $livro->autor ?></div>
       <div class="text-xs italic">
-        <?= str_repeat('⭐', $livro->nota_avaliacao) ?> (<?= $livro->count_avaliacoes ?> <?php if ($livro->count_avaliacoes == 1) echo "Avaliação";
-                                                                                        else echo "Avaliações"; ?>)
+        <?= str_repeat('⭐', $livro->nota_avaliacao) ?> (<?= $livro->count_avaliacoes ?> <?php if ($livro->count_avaliacoes == 1) {
+            echo "Avaliação";
+        } else {
+            echo "Avaliações";
+        } ?>)
       </div>
     </div>
   </div>

@@ -1,9 +1,7 @@
 <?php
-require "../models/Livro.php";
-require "../models/Usuario.php";
-require "../models/Avaliacao.php";
-session_start();
-require "../functions.php";
-require "../Flash.php";
-require "../Database.php";
-require "../routes.php";
+
+declare(strict_types = 1);
+
+require __DIR__ . '/../bootstrap.php';
+
+require __DIR__ . '/../routes.php';

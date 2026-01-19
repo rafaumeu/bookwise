@@ -1,12 +1,16 @@
 <?php
-$path = parse_url($_SERVER["REQUEST_URI"])["path"];
+
+declare(strict_types = 1);
+$path       = parse_url($_SERVER["REQUEST_URI"])["path"];
 $controller = str_replace("/", "", $path);
-if (!$controller) $controller = 'index';
+
+if (! $controller) {
+    $controller = 'index';
+}
 $controllerFile = "../controllers/{$controller}.controller.php";
 
-
-if (!file_exists($controllerFile)) {
-  abort(404);
+if (! file_exists($controllerFile)) {
+    abort(404);
 }
 
 require $controllerFile;
