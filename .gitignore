@@ -13,3 +13,7 @@ composer.phar
 .env
 .phpunit.result.cache
 .agent/*
+
+.agent/
+task.md
+implementation_plan.md
