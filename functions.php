@@ -17,10 +17,10 @@ function dump(...$dump)
   var_dump($dump);
   echo "</pre>";
 }
-function abort($code)
+function abort($code, $message = "")
 {
   http_response_code($code);
-  view($code);
+  view($code, ['message' => $message]);
   die();
 }
 
