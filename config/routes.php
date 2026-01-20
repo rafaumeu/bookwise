@@ -2,4 +2,6 @@
 
 declare(strict_types = 1);
 
-return [];
+use Core\Route;
+
+Route::get('/', 'IndexController@index');

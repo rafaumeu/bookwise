@@ -35,8 +35,11 @@ class Route
 
             return;
         }
-        $controller = static::$routes[$method][$uri];
+        $route                 = static::$routes[$method][$uri];
+        [$controller, $action] = explode('@', $route);
+        $controllerClass       = "App\\Controllers\\{$controller}";
 
-        require base_path("App/Controllers/{$controller}.php");
+        $instance = new $controllerClass();
+        $instance->$action();
     }
 }
