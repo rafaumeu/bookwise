@@ -1,8 +1,8 @@
 <?php
 
 declare(strict_types = 1);
-use Core\Route;
 use Core\Request;
+use Core\Route;
 
 require __DIR__ . '/../bootstrap.php';
 

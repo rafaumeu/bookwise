@@ -60,3 +60,10 @@ function base_path($path = '')
 {
     return __DIR__ . '/../' . $path;
 }
+
+function redirect($path)
+{
+    header("Location: {$path}");
+
+    exit();
+}

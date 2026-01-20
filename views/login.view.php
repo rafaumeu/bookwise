@@ -96,6 +96,5 @@
       <button type="reset" class="border-lime-800 bg-lime-900 px-4 py-2 rounded-md border border-2 hover:bg-lime-800">Cancelar</button>
       <button type="submit" class="border-lime-800 bg-lime-900 px-4 py-2 rounded-md border border-2 hover:bg-lime-800">Registrar</button>
     </form>
-
-  </div>'
-</div>'
+  </div>
+</div>

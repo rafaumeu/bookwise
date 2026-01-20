@@ -7,7 +7,7 @@ use Core\Database;
 
 require __DIR__ . '/vendor/autoload.php';
 
-$config = require base_path('config.php');
+$config = require base_path('config/config.php');
 
 $database = Database::make($config['database']);
 
