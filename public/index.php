@@ -5,6 +5,7 @@ use Core\Request;
 use Core\Route;
 
 require __DIR__ . '/../bootstrap.php';
+session_start();
 
 require base_path('config/routes.php');
 
