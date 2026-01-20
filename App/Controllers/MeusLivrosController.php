@@ -10,10 +10,10 @@ class MeusLivrosController
 {
     public function index()
     {
-      if(!auth()) {
-        return redirect('/login');
-      }
-      $livros = Livro::meus(auth()->id);
+        if (! auth()) {
+            return redirect('/login');
+        }
+        $livros = Livro::meus(auth()->id);
         view('meus-livros', ["livros" => $livros]);
     }
 }

@@ -19,7 +19,7 @@
   <?php if (auth()): ?>
     <div class="border border-stone-700 rounded">
       <h2 class="border-b border-stone-700 text-stone-400 font-bold px-4 py-2">Me conte o que achou!</h2>
-      <form class="space-y-2 space-x-4" method="post" action="avaliacao-criar">
+      <form class="space-y-2 space-x-4" method="post" action="/avaliacao-criar">
         <?php if ($validacoes = flash()->get('validacoes_avaliacao')): ?>
           <div class="bg-red-900 border-red-800 border-2 px-4 py-2 rounded text-sm font-bold text-red-300">
             <ul>
