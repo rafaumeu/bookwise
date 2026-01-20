@@ -1,0 +1,44 @@
+name: Upload Release Asset
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Upload Release Asset
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+
+      - name: Install Dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: Create Artifact Zip
+        run: |
+          zip -r bookwise-release.zip . \
+          -x "*.git*" \
+          -x ".github/*" \
+          -x ".agent/*" \
+          -x "tests/*" \
+          -x "database.sqlite" \
+          -x "task.md" \
+          -x "implementation_plan.md" \
+          -x "phpstan.neon" \
+          -x "pint.json" \
+          -x "src/*"
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: bookwise-release.zip

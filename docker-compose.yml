@@ -1,0 +1,19 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bookwise:latest
+    container_name: bookwise-app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      # Init script to create sqlite db if not exists
+    entrypoint: ["bash", "-c", "touch database.sqlite && chown www-data:www-data database.sqlite && apache2-foreground"]
+    networks:
+      - bookwise-network
+
+networks:
+  bookwise-network:
+    driver: bridge
