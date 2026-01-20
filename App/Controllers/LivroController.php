@@ -42,9 +42,6 @@ class LivroController
 
     public function store()
     {
-        if (! auth()) {
-            return redirect('/login');
-        }
         $validacao = Validacao::validar([
             'titulo'         => ['required', 'min:3', 'max:255'],
             'autor'          => ['required', 'min:3', 'max:255'],

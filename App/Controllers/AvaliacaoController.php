@@ -11,9 +11,6 @@ class AvaliacaoController
 {
     public function store()
     {
-        if (! auth()) {
-            return redirect('/login');
-        }
         $validacao = Validacao::validar([
             'avaliacao' => ['required'],
             'nota'      => ['required'],
