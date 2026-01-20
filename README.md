@@ -1,9 +1,10 @@
 # 📚 Bookwise
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
-![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge&logoScale=20)
+[![Fix Code Style](https://img.shields.io/github/actions/workflow/status/rafaumeu/bookwise/lint.yml?branch=main&label=Build&logo=github&style=for-the-badge&logoScale=20)](https://github.com/rafaumeu/bookwise/actions/workflows/lint.yml)
+![PHP](https://img.shields.io/badge/php-8.3-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white&logoScale=20)
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white&logoScale=20)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white&logoScale=20)
 
 **Bookwise** is a comprehensive platform for book management and reviews. The project offers a fluid experience for cataloging your readings, sharing opinions, and discovering new titles.
 
@@ -53,19 +54,23 @@ Built with **Modern PHP**, Bookwise implements a secure and organized architectu
 
 ```
 bookwise/
-├── controllers/    # Route control logic
-├── models/         # Database access classes (Active Record pattern)
-├── views/          # HTML/PHP Templates
-├── public/         # Web server root (Assets, index.php)
-├── database.sqlite # Local database
-└── config.php      # General configuration
+├── App/                # Application Logic
+│   ├── Controllers/    # HTTP Request Handlers
+│   ├── Middlewares/    # Route Protection
+│   └── Models/         # Data Entities
+├── Core/               # Framework Core (Lockbox Standard)
+│   ├── Database.php, Route.php, Session.php...
+├── config/             # Configuration & Routes
+├── public/             # Entry Point (index.php)
+└── views/              # Frontend Templates
 ```
 
 ## 👨‍💻 Author
-
+<div align="center">
 <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/30784471?v=4" width="100px;" alt=""/>
 
 Made with 💜 by **[Rafael Dias Zendron](https://github.com/rafaumeu)**
 
 [![Linkedin Badge](https://img.shields.io/badge/-Rafael-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rafael-dias-zendron/)](https://www.linkedin.com/in/rafael-dias-zendron/) 
 [![Gmail Badge](https://img.shields.io/badge/-mmmarckos@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:mmmarckos@gmail.com)](mailto:mmmarckos@gmail.com)
+</div>
