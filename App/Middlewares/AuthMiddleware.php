@@ -6,10 +6,10 @@ namespace App\Middlewares;
 
 class AuthMiddleware
 {
-    public function handle()
+    public function handle(): void
     {
         if (! auth()) {
-            return redirect('/login');
+            redirect('/login');
         }
     }
 }

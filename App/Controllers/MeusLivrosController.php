@@ -8,7 +8,7 @@ use App\Models\Livro;
 
 class MeusLivrosController
 {
-    public function index()
+    public function index(): void
     {
         $livros = Livro::meus(auth()->id);
         view('meus-livros', ["livros" => $livros]);

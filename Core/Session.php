@@ -6,17 +6,17 @@ namespace Core;
 
 class Session
 {
-    public static function has($key): bool
+    public static function has(string $key): bool
     {
         return isset($_SESSION[$key]);
     }
 
-    public static function put($key, $value): void
+    public static function put(string $key, mixed $value): void
     {
         $_SESSION[$key] = $value;
     }
 
-    public static function flash($key, $value): void
+    public static function flash(string $key, mixed $value): void
     {
         $_SESSION['_flash'][$key] = $value;
     }

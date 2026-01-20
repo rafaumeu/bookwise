@@ -63,6 +63,11 @@ bookwise/
 ├── config/             # Configuration & Routes
 ├── public/             # Entry Point (index.php)
 └── views/              # Frontend Templates
+
+## 🛡️ Quality & Security
+- **PHPStan**: Running at **Level 6** (Strict Typing enforced).
+- **Pint**: PSR-12 automatic code formatting.
+- **Strict Types**: `declare(strict_types=1);` in 100% of files.
 ```
 
 ## 👨‍💻 Author

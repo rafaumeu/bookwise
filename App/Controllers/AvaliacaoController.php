@@ -9,7 +9,7 @@ use Core\Validacao;
 
 class AvaliacaoController
 {
-    public function store()
+    public function store(): void
     {
         $validacao = Validacao::validar([
             'avaliacao' => ['required'],
@@ -17,16 +17,21 @@ class AvaliacaoController
         ], $_POST);
 
         if ($validacao->naoPassou('avaliacao')) {
-            return redirect('/meus-livros');
+            redirect('/meus-livros');
         }
         $db = App::resolve('database');
         $db->query(
             query: "insert into avaliacoes (usuario_id, livro_id, avaliacao, nota) 
             values (:usuario_id, :livro_id, :avaliacao, :nota)",
-            params: compact('usuario_id', 'livro_id', 'avaliacao', 'nota')
+            params: [
+                'usuario_id' => auth()->id,
+                'livro_id'   => $_POST['livro_id'],
+                'avaliacao'  => $_POST['avaliacao'],
+                'nota'       => $_POST['nota'],
+            ]
         );
         flash()->push('mensagem', 'Avaliação criada com sucesso');
 
-        return redirect('/meus-livros');
+        redirect('/meus-livros');
     }
 }

@@ -6,9 +6,18 @@ namespace Core;
 
 class Validacao
 {
-    public $validacoes = [];
+    /**
+     * @var array<int, string>
+     */
+    public array $validacoes = [];
 
-    public static function validar($regras, $dados)
+    /**
+     * Summary of validar
+     * @param array<string, array<string>> $regras
+     * @param array<string, string> $dados
+     * @return self
+     */
+    public static function validar(array $regras, array $dados): self
     {
         $validacao = new self();
 
@@ -30,28 +39,28 @@ class Validacao
         return $validacao;
     }
 
-    private function required($campo, $valor)
+    private function required(string $campo, string $valor): void
     {
         if (empty($valor)) {
             $this->validacoes[] = "O $campo é obrigatório.";
         }
     }
 
-    private function email($campo, $valor)
+    private function email(string $campo, string $valor): void
     {
         if (! filter_var($valor, FILTER_VALIDATE_EMAIL)) {
             $this->validacoes[] = "O $campo é inválido";
         }
     }
 
-    private function confirmed($campo, $valor, $valorDeConfirmacao)
+    private function confirmed(string $campo, string $valor, string $valorDeConfirmacao): void
     {
         if ($valor != $valorDeConfirmacao) {
             $this->validacoes[] = "O $campo de confirmação está diferente";
         }
     }
 
-    public function naoPassou($nomeCustomisado = null)
+    public function naoPassou(?string $nomeCustomisado = null): bool
     {
         $chave = 'validacoes';
 
@@ -63,26 +72,26 @@ class Validacao
         return sizeof($this->validacoes) > 0;
     }
 
-    private function min($min, $campo, $valor)
+    private function min(int $min, string $campo, string $valor): void
     {
         if (strlen($valor) < $min) {
             $this->validacoes[] = "O $campo deve conter no mínimo $min caracteres.";
         }
     }
 
-    private function max($max, $campo, $valor)
+    private function max(int $max, string $campo, string $valor): void
     {
         if (strlen($valor) > $max) {
             $this->validacoes[] = "O $campo deve conter no máximo $max caracteres.";
         }
     }
 
-    private function unique($tabela, $campo, $valor)
+    private function unique(string $tabela, string $campo, string $valor): void
     {
         if (strlen($valor) == 0) {
             return;
         }
-        $db        = new Database(config('database'));
+        $db        = App::resolve('database');
         $resultado = $db->query(
             query: "select * from $tabela where $campo = :valor",
             params: ['valor' => $valor]
@@ -93,7 +102,7 @@ class Validacao
         }
     }
 
-    private function strong($campo, $valor)
+    private function strong(string $campo, string $valor): void
     {
         if (! preg_match("/[A-Z]/", $valor)) {
             $this->validacoes[] = "O $campo deve conter pelo menos uma letra maiúscula";

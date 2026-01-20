@@ -11,12 +11,12 @@ use Core\Validacao;
 
 class AuthController
 {
-    public function index()
+    public function index(): void
     {
         view('login');
     }
 
-    public function login()
+    public function login(): void
     {
         $validacao = Validacao::validar([
             "email" => ["required", "email"],
@@ -24,7 +24,7 @@ class AuthController
         ], $_POST);
 
         if ($validacao->naoPassou('login')) {
-            return redirect('/login');
+            redirect('/login');
         }
         $db      = App::resolve('database');
         $usuario = $db->query("SELECT * FROM usuarios WHERE email = :email", Usuario::class, [
@@ -35,22 +35,22 @@ class AuthController
             $_SESSION['auth'] = $usuario;
             flash()->push('mensagem', 'Seja bem-vindo(a) ' . $usuario->nome . '!');
 
-            return redirect('/');
+            redirect('/');
         } else {
             flash()->push('validacoes_login', ["usuario ou senha incorretos"]);
 
-            return redirect("/login");
+            redirect("/login");
         }
     }
 
-    public function logout()
+    public function logout(): void
     {
         Session::destroy();
 
-        return redirect("/login");
+        redirect("/login");
     }
 
-    public function registrar()
+    public function registrar(): void
     {
         $validacao = Validacao::validar([
             "nome"              => ["required"],
@@ -60,7 +60,7 @@ class AuthController
         ], $_POST);
 
         if ($validacao->naoPassou('registrar')) {
-            return redirect('/login');
+            redirect('/login');
         }
         $db      = App::resolve('database');
         $usuario = $db->query("SELECT * FROM usuarios WHERE email = :email", Usuario::class, [
@@ -70,7 +70,7 @@ class AuthController
         if ($usuario) {
             flash()->push('validacoes_registrar', ["email ja cadastrado"]);
 
-            return redirect("/login");
+            redirect("/login");
         }
         $usuario = $db->query("INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)", Usuario::class, [
             'nome'  => $_POST['nome'],
@@ -80,6 +80,6 @@ class AuthController
 
         flash()->push('mensagem', 'Usuario cadastrado com sucesso!');
 
-        return redirect('/login');
+        redirect('/login');
     }
 }

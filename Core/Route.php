@@ -6,27 +6,39 @@ namespace Core;
 
 class Route
 {
+    /**
+     * Summary of routes
+     * @var array<string, array<string, array<string, string|null>>>
+     */
     protected static array $routes = [];
 
+    /**
+     * Summary of lastRoute
+     * @var array<string, string>
+     */
     protected static array $lastRoute = [];
 
+    /**
+     * Summary of middlewares
+     * @var array<string, string>
+     */
     protected static array $middlewares = [
         'auth' => \App\Middlewares\AuthMiddleware::class,
     ];
 
-    public static function middleware($key)
+    public static function middleware(string $key): self
     {
         if (empty(static::$lastRoute)) {
-            return new static();
+            return new self();
         }
         $method                                      = static::$lastRoute['method'];
         $uri                                         = static::$lastRoute['uri'];
         static::$routes[$method][$uri]['middleware'] = $key;
 
-        return new static();
+        return new self();
     }
 
-    public static function get($uri, $controller)
+    public static function get(string $uri, string $controller): self
     {
         static::$routes['GET'][$uri] = [
             'controller' => $controller,
@@ -34,10 +46,10 @@ class Route
         ];
         static::$lastRoute = ['method' => 'GET', 'uri' => $uri];
 
-        return new static();
+        return new self();
     }
 
-    public static function post($uri, $controller)
+    public static function post(string $uri, string $controller): self
     {
         static::$routes['POST'][$uri] = [
             'controller' => $controller,
@@ -45,10 +57,10 @@ class Route
         ];
         static::$lastRoute = ['method' => 'POST', 'uri' => $uri];
 
-        return new static();
+        return new self();
     }
 
-    public static function delete($uri, $controller)
+    public static function delete(string $uri, string $controller): self
     {
         static::$routes['DELETE'][$uri] = [
             'controller' => $controller,
@@ -56,10 +68,10 @@ class Route
         ];
         static::$lastRoute = ['method' => 'DELETE', 'uri' => $uri];
 
-        return new static();
+        return new self();
     }
 
-    public static function put($uri, $controller)
+    public static function put(string $uri, string $controller): self
     {
         static::$routes['PUT'][$uri] = [
             'controller' => $controller,
@@ -67,10 +79,10 @@ class Route
         ];
         static::$lastRoute = ['method' => 'PUT', 'uri' => $uri];
 
-        return new static();
+        return new self();
     }
 
-    public static function handle($uri, $method)
+    public static function handle(string $uri, string $method): void
     {
         if (! isset(static::$routes[$method][$uri])) {
             abort(404);

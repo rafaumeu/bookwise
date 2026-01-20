@@ -11,25 +11,37 @@ use Core\App;
  */
 class Livro
 {
-    public $id;
+    public int $id;
 
-    public $titulo;
+    public string $titulo;
 
-    public $autor;
+    public string $autor;
 
-    public $descricao;
+    public string $descricao;
 
-    public $avaliacoes;
+    /**
+     * Summary of avaliacoes
+     * @var array<int, Avaliacao>
+     */
+    public array $avaliacoes;
 
-    public $ano_lancamento;
+    public int $ano_lancamento;
 
-    public $nota_avaliacao;
+    public ?float $nota_avaliacao;
 
-    public $count_avaliacoes;
+    public ?int $count_avaliacoes;
 
-    public $image;
+    public ?string $image;
 
-    public static function query($where, $params = [])
+    public ?int $usuario_id;
+
+    /**
+     * Summary of query
+     * @param string $where
+     * @param array<string, mixed> $params
+     * @return mixed
+     */
+    public static function query(string $where, array $params = []): mixed
     {
         $DB = App::resolve('database');
 
@@ -52,15 +64,22 @@ class Livro
         );
     }
 
-    public static function get($id)
+    public static function get(int $id): ?self
     {
-        return self::query(
+        $resultado = self::query(
             where: "l.id = :id",
             params: ['id' => $id]
         )->fetch();
+
+        return $resultado ?: null;
     }
 
-    public static function all($filtro)
+    /**
+     * Summary of all
+     * @param string $filtro
+     * @return array<int, self>
+     */
+    public static function all(string $filtro): array
     {
         return self::query(
             where: "titulo like :filtro or autor like :filtro or descricao like :filtro",
@@ -68,7 +87,12 @@ class Livro
         )->fetchAll();
     }
 
-    public static function meus($usuario_id)
+    /**
+     * Summary of meus
+     * @param int $usuario_id
+     * @return array<int, self>
+     */
+    public static function meus(int $usuario_id): array
     {
         return self::query(
             where: "l.usuario_id = :usuario_id",

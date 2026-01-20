@@ -6,7 +6,11 @@ namespace Core;
 
 class App
 {
-    protected static $container = [];
+    /**
+     * Summary of container
+     * @var array<string, mixed>
+     */
+    protected static array $container = [];
 
     public static function set(string $key, mixed $value): void
     {

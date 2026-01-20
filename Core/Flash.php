@@ -6,12 +6,12 @@ namespace Core;
 
 class Flash
 {
-    public function push($chave, $valor)
+    public function push(string $chave, mixed $valor): void
     {
         $_SESSION["flash_$chave"] = $valor;
     }
 
-    public function get($chave)
+    public function get(string $chave): mixed
     {
         $valor = $_SESSION["flash_$chave"] ?? null;
         unset($_SESSION["flash_$chave"]);

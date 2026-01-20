@@ -8,7 +8,7 @@ use App\Models\Livro;
 
 class IndexController
 {
-    public function index()
+    public function index(): void
     {
         $livros = Livro::all($_REQUEST['pesquisar'] ?? '');
 

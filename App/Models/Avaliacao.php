@@ -6,15 +6,15 @@ namespace App\Models;
 
 class Avaliacao
 {
-    public $id;
+    public int $id;
 
-    public $usuario_id;
+    public int $usuario_id;
 
-    public $livro_id;
+    public int $livro_id;
 
-    public $avaliacao;
+    public string $avaliacao;
 
-    public $nota;
+    public int $nota;
 
-    public $usuario;
+    public Usuario $usuario;
 }

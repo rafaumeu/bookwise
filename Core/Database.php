@@ -12,6 +12,11 @@ class Database
     {
     }
 
+    /**
+     * Summary of make
+     * @param array<string, string> $config
+     * @return self
+     */
     public static function make(array $config): self
     {
         $dsn = "sqlite:" . $config['database'];
@@ -24,9 +29,18 @@ class Database
             return new self($connection);
         } catch (\PDOException $e) {
             abort(500, "Database connection failed: ");
+
+            exit;
         }
     }
 
+    /**
+     * Summary of query
+     * @param string $query
+     * @param string|null $class
+     * @param array<string, mixed> $params
+     * @return mixed
+     */
     public function query(string $query, string $class = null, array $params = []): mixed
     {
         $smt = $this->connection->prepare($query);

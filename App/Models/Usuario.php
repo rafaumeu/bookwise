@@ -6,11 +6,11 @@ namespace App\Models;
 
 class Usuario
 {
-    public $id;
+    public int $id;
 
-    public $nome;
+    public string $nome;
 
-    public $email;
+    public string $email;
 
-    public $senha;
+    public string $senha;
 }

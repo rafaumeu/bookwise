@@ -12,7 +12,7 @@ use Core\Validacao;
 
 class LivroController
 {
-    public function show()
+    public function show(): void
     {
         $id = $_GET["id"] ?? null;
 
@@ -40,7 +40,7 @@ class LivroController
         ]);
     }
 
-    public function store()
+    public function store(): void
     {
         $validacao = Validacao::validar([
             'titulo'         => ['required', 'min:3', 'max:255'],
@@ -50,7 +50,7 @@ class LivroController
         ], $_POST);
 
         if ($validacao->naoPassou('livro')) {
-            return redirect('/meus-livros');
+            redirect('/meus-livros');
         }
         $novoNome = md5((string) rand());
         $extensao = pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
@@ -71,6 +71,6 @@ class LivroController
         ]);
         flash()->push("mensagem", "Livro criado com sucesso!");
 
-        return redirect('/meus-livros');
+        redirect('/meus-livros');
     }
 }
