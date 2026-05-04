@@ -3,11 +3,11 @@
 </div>
 
 <p align="center">
-  ![PHP 8.3](https://img.shields.io/badge/PHP_8.3-777BB4?style=for-the-badge&logo=php)
-  ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite)
-  ![PHPStan](https://img.shields.io/badge/PHPStan-263238?style=for-the-badge)
-  ![Clean Architecture](https://img.shields.io/badge/Clean_Architecture-FF0080?style=for-the-badge)
-  ![SOLID](https://img.shields.io/badge/SOLID-4CAF50?style=for-the-badge)
+  <img src="https://img.shields.io/badge/PHP_8.3-777BB4?style=for-the-badge&logo=php" alt="PHP 8.3"/>
+  <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite" alt="SQLite"/>
+  <img src="https://img.shields.io/badge/PHPStan-263238?style=for-the-badge" alt="PHPStan"/>
+  <img src="https://img.shields.io/badge/Clean_Architecture-FF0080?style=for-the-badge" alt="Clean Architecture"/>
+  <img src="https://img.shields.io/badge/SOLID-4CAF50?style=for-the-badge" alt="SOLID"/>
 </p>
 
 ## Overview
