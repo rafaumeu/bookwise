@@ -1,12 +1,12 @@
 <div align="center">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=FF0080&height=180&section=header&text=BookWise&fontSize=42&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=PHP%20Book%20Management%20System&descSize=18&descAlignY=52"/>
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=FFCA28&height=180&section=header&text=BookWise&fontSize=42&fontColor=fff&animation=fadeIn&fontAlignY=35&desc=PHP%20Book%20Management%20System&descSize=18&descAlignY=52"/>
 </div>
 
 <p align="center">
   <img src="https://img.shields.io/badge/PHP_8.3-777BB4?style=for-the-badge&logo=php" alt="PHP 8.3"/>
   <img src="https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite" alt="SQLite"/>
   <img src="https://img.shields.io/badge/PHPStan-263238?style=for-the-badge" alt="PHPStan"/>
-  <img src="https://img.shields.io/badge/Clean_Architecture-FF0080?style=for-the-badge" alt="Clean Architecture"/>
+  <img src="https://img.shields.io/badge/Clean_Architecture-FFCA28?style=for-the-badge" alt="Clean Architecture"/>
   <img src="https://img.shields.io/badge/SOLID-4CAF50?style=for-the-badge" alt="SOLID"/>
 </p>
 
@@ -64,12 +64,12 @@ php artisan serve
 MIT
 
 <div align="center">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=FF0080&height=100&section=footer"/>
+  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=FFCA28&height=100&section=footer"/>
   <br/>
   <sub>Built with ❤️ by <a href="https://github.com/rafaumeu">Rafael Zendron</a></sub>
 </div>
 
 <p align="center">
-  [![Use this template](https://img.shields.io/badge/Use_This_Template-FF0080?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rafaumeu/bookwise/generate)
+  [![Use this template](https://img.shields.io/badge/Use_This_Template-FFCA28?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rafaumeu/bookwise/generate)
 </p>
 
